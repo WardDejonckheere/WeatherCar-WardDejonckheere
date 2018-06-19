@@ -1,0 +1,14 @@
+[Unit]
+Description=Weathercar Sensor service
+After=network.target
+BindsTo=mysqld.service
+After=mysqld.service
+
+[Service]
+User=warddejonckheere
+Group=warddejonckheere
+WorkingDirectory=/home/warddejonckheere/WeatherCar/sensor
+ExecStart=/home/warddejonckheere/WeatherCar/env/bin/python /home/warddejonckheere/WeatherCar/sensor/sensor.py
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,14 @@
+[Unit]
+Description=uWSGI instance to serve project1 web interface
+After=network.target
+BindsTo=mysqld.service
+After=mysqld.service
+
+[Service]
+User=warddejonckheere
+Group=www-data
+WorkingDirectory=/home/warddejonckheere/WeatherCar/web
+ExecStart=/usr/bin/uwsgi --ini /home/warddejonckheere/WeatherCar/conf/uwsgi-flask.ini
+
+[Install]
+WantedBy=multi-user.target

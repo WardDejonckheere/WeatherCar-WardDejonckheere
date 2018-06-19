@@ -1,0 +1,128 @@
+    {% set active="settings" %} {% extends "base.html" %} {% block body %}
+
+    <form id="settings" class="u-max-width-lg o-row o-row--sm--meta">
+      <div class="o-row ">
+        <h2 class="c-lead c-lead--mxl c-lead--title u-mb-sm">Temperature</h2>
+        <div class="o-layout o-layout--align-center">
+          <div class="o-layout__item  u-2-of-5">
+            <input id="temperature_settings_cel" type="radio" name="Temperature" value="Celcius">
+            <label class="c-lead c-lead--mxl" for="temperature_settings_cel">Celcius</label>
+          </div>
+          <div class="o-layout__item  u-1-of-2">
+            <input id="temperature_settings_fahr" type="radio" name="Temperature" value="Fahrenheit">
+            <label class="c-lead c-lead--mxl" for="temperature_settings_fahr">Fahrenheit</label>
+          </div>
+        </div>
+      </div>
+      <div class="o-row ">
+        <h2 class="c-lead c-lead--mxl c-lead--title u-mb-sm">Time</h2>
+        <div class="o-layout o-layout--align-center">
+          <div class="o-layout__item  u-2-of-5">
+            <input id="time_setting_12" type="radio" name="Time" value="12">
+            <label class="c-lead c-lead--mxl" for="time_setting_12">AM/PM</label>
+          </div>
+          <div class="o-layout__item  u-2-of-5">
+            <input id="time_setting_24" type="radio" name="Time" value="24">
+            <label class="c-lead c-lead--mxl" for="time_setting_24">24hour</label>
+          </div>
+        </div>
+      </div>
+      <div class="o-row ">
+        <h2 class="c-lead c-lead--mxl c-lead--title u-mb-sm">Location</h2>
+        <div class="o-layout o-layout--align-center">
+          <div class="o-layout__item  u-2-of-5">
+            <input id="location_settings_dec" type="radio" name="Location" value="Decimal">
+            <label class="c-lead c-lead--mxl" for="location_settings_dec">Decimal</label>
+          </div>
+          <div class="o-layout__item  u-2-of-5">
+            <input id="location_settings_deg" type="radio" name="Location" value="Degrees">
+            <label class="c-lead c-lead--mxl" for="location_settings_deg">Degrees</label>
+          </div>
+        </div>
+      </div>
+      <div class="o-row ">
+        <h2 class="c-lead c-lead--mxl c-lead--title u-mb-sm">Pressure</h2>
+        <div class="o-layout o-layout--align-center">
+          <div class="o-layout__item  u-2-of-5">
+            <input id="pressure_settings_pa" type="radio" name="Pressure" value="Pascal">
+            <label class="c-lead c-lead--mxl" for="pressure_settings_pa">Pascal</label>
+          </div>
+          <div class="o-layout__item  u-2-of-5">
+            <input id="pressure_settings_bar" type="radio" name="Pressure" value="Bar">
+            <label class="c-lead c-lead--mxl" for="pressure_settings_bar">Bar</label>
+          </div>
+        </div>
+      </div>
+      <div class="o-row ">
+        <h2 class="c-lead c-lead--mxl c-lead--title u-mb-sm">Controls (desktop)</h2>
+        <div class="o-layout o-layout--align-center">
+          <div class="o-layout__item  u-2-of-5">
+            <input id="control_settings_wasd" type="radio" name="Controls" value="WASD">
+            <label class="c-lead c-lead--mxl" for="control_settings_wasd">WASD</label>
+          </div>
+          <div class="o-layout__item  u-2-of-5">
+            <input id="control_settings_zqsd" type="radio" name="Controls" value="ZQSD">
+            <label class="c-lead c-lead--mxl" for="control_settings_zqsd">ZQSD</label>
+          </div>
+        </div>
+      </div>
+      <div class="o-row o-row--submit">
+        <input class="c-submit" type="submit" value="APPLY">
+      </div>
+    </form>
+    <script>
+        namespace = "/settings";
+        var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port + namespace);
+        var current_settings = {{ current_settings | tojson }};
+        console.info(current_settings);
+        if (current_settings["Time_settings"] == 12){
+            document.getElementById("time_setting_12").checked = true;
+        }
+        else {
+            document.getElementById("time_setting_24").checked = true;
+        }
+        if (current_settings["Control_settings"] == "ZQSD"){
+            document.getElementById("control_settings_zqsd").checked = true;
+        }
+        else {
+            document.getElementById("control_settings_wasd").checked = true;
+        }
+
+        if (current_settings["Temperature_settings"] == "Celcius"){
+            document.getElementById("temperature_settings_cel").checked = true;
+        }
+        else {
+            document.getElementById("temperature_settings_fahr").checked = true;
+        }
+
+        if (current_settings["Location_settings"] == "Decimal"){
+            document.getElementById("location_settings_dec").checked = true;
+        }
+        else {
+            document.getElementById("location_settings_deg").checked = true;
+        }
+
+        if (current_settings["Pressure_settings"] == "Pascal"){
+            document.getElementById("pressure_settings_pa").checked = true;
+        }
+        else {
+            document.getElementById("pressure_settings_bar").checked = true;
+        }
+
+
+
+        $('form#settings').submit(function (event) {
+            socket.emit('settings', {
+                'Temperature_settings': $("input[type='radio'][name='Temperature']:checked").val(),
+                'Time_settings': $("input[type='radio'][name='Time']:checked").val(),
+                'Pressure_settings': $("input[type='radio'][name='Pressure']:checked").val(),
+                'Location_settings': $("input[type='radio'][name='Location']:checked").val(),
+                'Control_settings': $("input[type='radio'][name='Controls']:checked").val(),
+            });
+            window.location.replace("/");
+            return false;
+        })
+
+    </script>
+
+    {% endblock %}

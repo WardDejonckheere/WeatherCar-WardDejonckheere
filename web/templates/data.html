@@ -1,0 +1,202 @@
+{% set active="data" %}
+{% extends "base.html" %}
+{% block body %}
+
+    <script type="text/javascript" src="../static/js/Chart.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+                toggleNav();
+            })
+
+            function toggleNav() {
+                let toggleTrigger = document.querySelectorAll(".js-toggle-nav");
+                for (let i = 0; i < toggleTrigger.length; i++) {
+                    toggleTrigger[i].addEventListener("click", function() {
+                        console.log("ei");
+                        document.querySelector("body").classList.toggle("has-mobile-nav");
+                    })
+                }
+            }
+    </script>
+    <section class="c-page">
+        <section class="o-row u-max-width-lg">
+      <div class="o-layout o-layout--justify-end o-layout--align-center">
+        <div class="c-logo js-toggle-nav">
+          <svg class="c-logo__symbol c-nav__tr o-layout__item" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path d="M0 0h24v24H0z" fill="none"/>
+                  <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+            </svg>
+        </div>
+      </div>
+        </section>
+        <section class="o-row u-max-width-lg">
+          <div class="u-mb-lg o-row--primary-x-white o-row--box-shadow u-adjust-box-data">
+            <canvas id="chart1" width="300" height="300">
+            </canvas>
+              <canvas id="chart2" width="300" height="300">
+            </canvas>
+              <canvas id="chart3" width="300" height="300">
+            </canvas>
+          </div>
+          <script type="text/javascript">
+            var chart1_element = document.getElementById('chart1');
+            var chart2_element = document.getElementById('chart2');
+            var chart3_element = document.getElementById('chart3');
+            var data_chart = JSON.parse('{{ data_chart | tojson | safe}}');
+            var settings = JSON.parse('{{ general_settings | tojson | safe }}');
+            if (settings["Temperature_settings"] == "Celcius"){
+                var min_temperature = 0;
+                var max_temperature = 30;
+            }
+            else {
+                var min_temperature = 30;
+                var max_temperature = 90;
+            }
+
+            if (settings["Pressure_settings"] == "Bar"){
+                var min_pressure = 0.98;
+                var max_pressure = 1.04;
+            }
+            else {
+                var min_pressure = 98;
+                var max_pressure = 104;
+            }
+
+            var chart1 = new Chart(chart1_element, {
+              type: 'line',
+              data: {
+                labels: data_chart.temperature.labels,
+                datasets: [{
+                  label: 'Temperature',
+                  data: data_chart.temperature.data,
+                  backgroundColor: [
+                    'rgba(100, 99, 132, 0.1)',
+                  ],
+                  borderColor: [
+                    'rgba(166,0,0,1)',
+                  ],
+                  borderWidth: 1
+                }]
+              },
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                  yAxes: [{
+                    ticks: {
+                        beginAtZero: false,
+                      suggestedMin: min_temperature,
+                      suggestedMax: max_temperature
+                    }
+                  }]
+                }
+              }
+            });
+            var chart2 = new Chart(chart2_element, {
+              type: 'line',
+              data: {
+                labels: data_chart.pressure.labels,
+                datasets: [{
+                  label: 'Pressure',
+                  data: data_chart.pressure.data,
+                  backgroundColor: [
+                    'rgba(100, 99, 132, 0.1)',
+                  ],
+                  borderColor: [
+                    'rgba(166,0,0,1)',
+                  ],
+                  borderWidth: 1
+                }]
+              },
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                  yAxes: [{
+                    ticks: {
+                      suggestedMin: min_pressure,
+                      suggestedMax: max_pressure
+                    }
+                  }]
+                }
+              }
+            });
+            var chart3 = new Chart(chart3_element, {
+              type: 'line',
+              data: {
+                labels: data_chart.humidity.labels,
+                datasets: [{
+                  label: 'Humidity',
+                  data: data_chart.humidity.data,
+                  backgroundColor: [
+                    'rgba(100, 99, 132, 0.1)',
+                  ],
+                  borderColor: [
+                    'rgba(166,0,0,1)',
+                  ],
+                  borderWidth: 1
+                }]
+              },
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                  yAxes: [{
+                    ticks: {
+                      suggestedMin: 10,
+                      suggestedMax: 90
+                    }
+                  }]
+                }
+              }
+            });
+          </script>
+        </section>
+    </section>
+    <aside class="c-mobile-nav u-max-width-lg">
+            <div class="c-mobile-nav__bg"></div>
+            <div class="c-mobile-nav__body">
+                <div class="c-mobile-nav__header">
+                    <p class="c-logo"></p>
+                    <button class="o-button-reset c-nav-trigger js-toggle-nav">
+                        <svg class="c-nav-trigger__svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="c-mobile-nav__nav c-mobile-nav__nav--main">
+                    <nav class="c-nav">
+                        <ul class="o-list c-nav__list o-layout--justify-space-between">
+                            <li class="c-nav__item"><input type="button" id="temperature" class="c-nav__button" value="Temperature"></li>
+                            <li class="c-nav__item"><input type="button" id="pressure" class="c-nav__button" value="Pressure"></li>
+                            <li class="c-nav__item"><input type="button" id="humidity" class="c-nav__button" value="Humidity"></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </aside>
+    <script>
+        document.getElementById("chart2").style.display = 'none';
+        document.getElementById("chart3").style.display = 'none';
+
+        document.getElementById("temperature").addEventListener("click", function () {
+            document.querySelector("body").classList.toggle("has-mobile-nav");
+            document.getElementById("chart1").style.display = 'block';
+            document.getElementById("chart2").style.display = 'none';
+            document.getElementById("chart3").style.display = 'none';
+        })
+        document.getElementById("pressure").addEventListener("click", function () {
+            document.querySelector("body").classList.toggle("has-mobile-nav");
+            document.getElementById("chart1").style.display = 'none';
+            document.getElementById("chart2").style.display = 'block';
+            document.getElementById("chart3").style.display = 'none';
+        })
+        document.getElementById("humidity").addEventListener("click", function () {
+            document.querySelector("body").classList.toggle("has-mobile-nav");
+            document.getElementById("chart1").style.display = 'none';
+            document.getElementById("chart2").style.display = 'none';
+            document.getElementById("chart3").style.display = 'block';
+        })
+    </script>
+
+{% endblock %}

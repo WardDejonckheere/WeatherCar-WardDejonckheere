@@ -1,0 +1,221 @@
+{% set active="controls" %}
+{% extends "base.html" %}
+{% block body %}
+
+    <section class="u-max-width-lg">
+      <div class="o-row">
+        <div class="o-container">
+          <h1 class="c-logo c-logo__controls u-adjust-box-button-controls">
+            <svg class="c-logo__symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 330 330">
+              <defs>
+                <style>
+                  .cls-1 {
+                    fill: #595959;
+                    stroke: #000;
+                  }
+
+                  .cls-1, .cls-4 {
+                    stroke-width: 2px;
+                  }
+
+                  .cls-2, .cls-4 {
+                    fill: #e6e6e6;
+                  }
+
+                  .cls-3 {
+                    fill: none;
+                  }
+
+                  .cls-4 {
+                    stroke: #282828;
+                  }
+
+                  .cls-5 {
+                    stroke: none;
+                  }
+                </style>
+              </defs>
+              <g id="Controls" transform="translate(99.993 99.993)">
+                <path id="TOP" class="cls-1" d="M45.968,65.007-70-50.961a164.012,164.012,0,0,1,231.936,0Z" transform="translate(19.039 0)"/>
+                <path id="RIGHT" class="cls-1" d="M0,45.968,115.968-70a164.012,164.012,0,0,1,0,231.936Z" transform="translate(65.007 19.039)"/>
+                <path id="LEFT" class="cls-1" d="M65.007,45.968-50.961,161.936A164.012,164.012,0,0,1-50.961-70Z" transform="translate(0 19.039)"/>
+                <path id="BOTTOM" class="cls-1" d="M45.968,0,161.936,115.968a164.012,164.012,0,0,1-231.936,0Z" transform="translate(19.039 65.007)"/>
+                <g id="Arrow_Up" transform="translate(11.007 -96.993)">
+                  <path id="Path_16" data-name="Path 16" class="cls-2" d="M12.345,41.345,33,20.735l20.655,20.61L60,35,33,8,6,35Z" transform="translate(21 28)"/>
+                  <path id="Path_17" data-name="Path 17" class="cls-3" d="M0,0H108V108H0Z"/>
+                </g>
+                <g id="Arrow_Right" transform="translate(227.007 11.007) rotate(90)">
+                  <path id="Path_16-2" data-name="Path 16" class="cls-2" d="M12.345,41.345,33,20.735l20.655,20.61L60,35,33,8,6,35Z" transform="translate(21 28)"/>
+                  <path id="Path_17-2" data-name="Path 17" class="cls-3" d="M0,0H108V108H0Z"/>
+                </g>
+                <g id="Arrow_Left" transform="translate(-96.993 119.007) rotate(-90)">
+                  <path id="Path_16-3" data-name="Path 16" class="cls-2" d="M12.345,41.345,33,20.735l20.655,20.61L60,35,33,8,6,35Z" transform="translate(21 28)"/>
+                  <path id="Path_17-3" data-name="Path 17" class="cls-3" d="M0,0H108V108H0Z"/>
+                </g>
+                <g id="Arrow_Down" transform="translate(119.007 227.007) rotate(180)">
+                  <path id="Path_16-4" data-name="Path 16" class="cls-2" d="M12.345,41.345,33,20.735l20.655,20.61L60,35,33,8,6,35Z" transform="translate(21 28)"/>
+                  <path id="Path_17-4" data-name="Path 17" class="cls-3" d="M0,0H108V108H0Z"/>
+                </g>
+                <g id="Ellipse_19" data-name="Ellipse 19" class="cls-4" transform="translate(11.007 11.007)">
+                  <circle class="cls-5" cx="54" cy="54" r="54"/>
+                  <circle class="cls-3" cx="54" cy="54" r="53"/>
+                </g>
+              </g>
+            </svg>
+          </h1>
+        </div>
+      </div>
+    </section>
+    <section class="o-row u-max-width-md">
+      <div class="o-container">
+        <div class="o-section o-section--lg">
+          <div class="o-layout o-layout--gutter o-layout--align-center">
+            <div class="o-layout__item u-1-of-2 u-mb-lg">
+              <div class="o-row--primary-x-white o-row--box-shadow u-adjust-box-data-controls">
+                <div class="o-row o-row--sm">
+                  <header>
+                    <h2 class="c-lead c-lead--title u-mb-sm">Temperature</h2>
+                  </header>
+                  <p id="Temperature" class="c-lead c-lead--values-small ">?</p>
+                </div>
+              </div>
+            </div>
+            <div class="o-layout__item u-1-of-2 u-mb-lg">
+              <div class="o-row--primary-x-white o-row--box-shadow u-adjust-box-data-controls">
+                <div class="o-row o-row--sm">
+                  <header>
+                    <h2 class="c-lead c-lead--title u-mb-sm">Humidity</h2>
+                  </header>
+                  <p id="Humidity" class="c-lead c-lead--values-small ">?</p>
+                </div>
+              </div>
+            </div>
+            <div class="o-layout__item u-1-of-2 u-mb-md">
+              <div class="o-row--primary-x-white o-row--box-shadow u-adjust-box-data-controls">
+                <div class="o-row o-row--sm">
+                  <header>
+                    <h2 class="c-lead c-lead--title u-mb-sm">Pressure</h2>
+                  </header>
+                  <p id="Pressure" class="c-lead c-lead--values-small ">?</p>
+                </div>
+              </div>
+            </div>
+            <div class="o-layout__item u-1-of-2 u-mb-md">
+              <div class="o-row--primary-x-white o-row--box-shadow u-adjust-box-data-controls">
+                <div class="o-row o-row--sm">
+                  <header>
+                    <h2 class="c-lead c-lead--title u-mb-sm">Location</h2>
+                  </header>
+                  <p id="Location" class="c-lead c-lead--values-small ">?</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+        var settings = "{{ settings_controls }}"
+
+        var keystates = {"ArrowLeft":false, "ArrowRight":false, "ArrowUp":false, "ArrowDown":false, "z":false,
+        "q":false, "s":false, "d":false, "a":false, "w":false};
+        $(document).ready(function(){
+            var socket = io.connect('http://' + document.domain + ':' + location.port + '/control');
+            $("#Arrow_Down").on("touchstart mousedown", function(event){
+                socket.emit('backwards', "backwards");
+                return false;
+            }).on("touchend mouseup",function(event){
+                socket.emit('stop', "stop");
+                return false;
+            });
+            $("#Arrow_Up").on("touchstart mousedown", function() {
+                socket.emit('forwards', "forwards");
+                return false;
+             }).on('touchend mouseup', function() {
+                socket.emit('stop', "stop");
+                return false;
+            });
+            $("#Arrow_Left").on("touchstart  mousedown", function() {
+                socket.emit('left', "left");
+                return false;
+             }).on('touchend mouseup', function() {
+             socket.emit('stopturn', "stopturn");
+                return false;
+             });
+            $("#Arrow_Right").on("touchstart  mousedown", function() {
+                socket.emit('right', "right");
+                return false;
+             }).on('touchend mouseup', function() {
+                socket.emit('stopturn', "stopturn");
+                return false;
+             });
+            document.addEventListener("keydown", function (e) {
+                if(e.key == "ArrowUp" || ((e.key == "z") && (settings == "ZQSD")) || ((e.key == "w") && (settings == "WASD"))){
+                    if(keystates[e.key] == false){
+                        socket.emit('forwards', "forwards");
+                        keystates[e.key] = true;
+                    }
+                    else{
+                        //pass
+                    }
+                }
+                if(e.key == "ArrowDown" || (e.key == "s")){
+                    if(keystates[e.key] == false){
+                        socket.emit('backwards', "backwards");
+                        keystates[e.key] = true;
+                    }
+                    else{
+                        //pass
+                    }
+                }
+                if(e.key == "ArrowLeft" || ((e.key == "q") && (settings == "ZQSD")) || ((e.key == "a") && (settings == "WASD"))){
+                    if(keystates[e.key] == false){
+                        socket.emit('left', "left");
+                        keystates[e.key] = true;
+                    }
+                    else{
+                        //pass
+                    }
+                }
+                if(e.key == "ArrowRight" || (e.key == "d")){
+                    if(keystates[e.key] == false){
+                        socket.emit('right', "right");
+                        keystates[e.key] = true;
+                    }
+                    else{
+                        //pass
+                    }
+                }
+                console.info(e.key)
+            });
+            document.addEventListener("keyup", function (e) {
+                if(e.key == "ArrowUp" || ((e.key == "z") && (settings == "ZQSD")) || ((e.key == "w") && (settings == "WASD"))){
+                    socket.emit('stop', "stop");
+                    keystates[e.key] = false;
+                }
+                if(e.key == "ArrowDown" || (e.key == "s")){
+                    socket.emit('stop', "stop");
+                    keystates[e.key] = false;
+                }
+                if(e.key == "ArrowLeft" || ((e.key == "q") && (settings == "ZQSD")) || ((e.key == "a") && (settings == "WASD"))){
+                    socket.emit('stopturn', "stopturn");
+                    keystates[e.key] = false;
+                }
+                if(e.key == "ArrowRight" || (e.key == "d")){
+                    socket.emit('stopturn', "stopturn");
+                    keystates[e.key] = false;
+                }
+            });
+        });
+        namespace = '/datahome';
+        var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port + namespace);
+        socket.on('my data', function (msg) {
+            console.info(msg);
+            let data = JSON.parse(msg);
+            document.getElementById("Temperature").innerHTML = data["temperature"][0];
+            document.getElementById("Humidity").innerHTML = data["humidity"][0];
+            document.getElementById("Pressure").innerHTML = data["pressure"][0];
+            document.getElementById("Location").innerHTML = data["gpslat"] + "<br>" + data["gpslong"];
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>WeatherCar - All you need</title>
+  <meta name="description" content="EUHM, HOW DID I GET HERE?">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="msapplication-TileColor" content="#3385FF">
+  <meta name="theme-color" content="#FF0000">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#3385FF">
+
+  <link rel="stylesheet" href="../static/css/normalize.css">
+  <link rel="stylesheet" href="../static/css/screen.css">
+  <script type="text/javascript" src="../static/js/Chart.js"></script>
+  <title>WeatherCar</title>
+</head>
+
+<body class="">
+  <header class="o-row o-row--header">
+    <div class="o-container">
+      <div class="c-header u-color-white">
+        <div class="c-header__title">
+          <h1 class="c-nav__item u-mb-clear">WeatherCar</h1>
+        </div>
+        <div class="c-header__nav">
+          <ul class="o-list c-nav__list">
+            <li class="c-nav__item">Home</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="o-row o-row--buttons">
+    <div class="c-buttons">
+      <div class="c-buttons__nav">
+        <nav class="c-nav">
+          <ul class="o-list c-nav__list">
+            <li class="c-nav__item--cta">
+              <a href="#!" class="c-nav__link">
+                <h1 class="c-logo">
+                    <svg class="c-logo__symbol" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                    </svg>
+                  </h1>
+              </a>
+            </li>
+            <li class="c-nav__item--cta">
+              <a href="#!" class="c-nav__link">
+                <h1 class="c-logo">
+                    <svg class="c-logo__symbol" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M15.54 5.54L13.77 7.3 12 5.54 10.23 7.3 8.46 5.54 12 2zm2.92 10l-1.76-1.77L18.46 12l-1.76-1.77 1.76-1.77L22 12zm-10 2.92l1.77-1.76L12 18.46l1.77-1.76 1.77 1.76L12 22zm-2.92-10l1.76 1.77L5.54 12l1.76 1.77-1.76 1.77L2 12z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                        <path fill="none" d="M0 0h24v24H0z"/>
+                    </svg>
+                  </h1>
+              </a>
+            </li>
+            <li class="c-nav__item--cta">
+              <a href="#!" class="c-nav__link">
+                <h1 class="c-logo">
+                    <svg class="c-logo__symbol" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path fill="none" d="M0 0h24v24H0V0z"/>
+                        <g fill="#010101">
+                            <circle cx="7" cy="14" r="3"/>
+                            <circle cx="11" cy="6" r="3"/>
+                            <circle cx="16.6" cy="17.6" r="3"/>
+                        </g>
+                    </svg>
+                  </h1>
+              </a>
+            </li>
+            <li class="c-nav__item--cta">
+              <a href="#!" class="c-nav__link">
+                <h1 class="c-logo">
+                    <svg class="c-logo__symbol" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                        <path fill="none" d="M0 0h20v20H0V0z"/>
+                        <path d="M15.95 10.78c.03-.25.05-.51.05-.78s-.02-.53-.06-.78l1.69-1.32c.15-.12.19-.34.1-.51l-1.6-2.77c-.1-.18-.31-.24-.49-.18l-1.99.8c-.42-.32-.86-.58-1.35-.78L12 2.34c-.03-.2-.2-.34-.4-.34H8.4c-.2 0-.36.14-.39.34l-.3 2.12c-.49.2-.94.47-1.35.78l-1.99-.8c-.18-.07-.39 0-.49.18l-1.6 2.77c-.1.18-.06.39.1.51l1.69 1.32c-.04.25-.07.52-.07.78s.02.53.06.78L2.37 12.1c-.15.12-.19.34-.1.51l1.6 2.77c.1.18.31.24.49.18l1.99-.8c.42.32.86.58 1.35.78l.3 2.12c.04.2.2.34.4.34h3.2c.2 0 .37-.14.39-.34l.3-2.12c.49-.2.94-.47 1.35-.78l1.99.8c.18.07.39 0 .49-.18l1.6-2.77c.1-.18.06-.39-.1-.51l-1.67-1.32zM10 13c-1.65 0-3-1.35-3-3s1.35-3 3-3 3 1.35 3 3-1.35 3-3 3z"/>
+                    </svg>
+                  </h1>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <section class="o-row">
+    <div class="o-layout o-layout--justify-end o-layout--align-center">
+      <div class="c-logo">
+        <svg class="c-logo__symbol o-layout__item" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path d="M0 0h24v24H0z" fill="none"/>
+                <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+          </svg>
+      </div>
+    </div>
+  </section>
+  <section class="o-row">
+    <div class="u-mb-lg o-row--primary-x-white o-row--box-shadow o-row--chart">
+      <canvas id="chart1" width="300" height="300">
+      </canvas>
+    </div>
+    <script type="text/javascript">
+      let chart1_element = document.getElementById('chart1');
+      var chart1 = new Chart(chart1_element, {
+        type: 'line',
+        data: {
+          labels: ["9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00"],
+          datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3, -4],
+            backgroundColor: [
+              'rgba(100, 99, 132, 0.2)',
+            ],
+            borderColor: [
+              'rgba(255,99,132,1)',
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          }
+        }
+      });
+    </script>
+  </section>
+</body>
+
+</html>
