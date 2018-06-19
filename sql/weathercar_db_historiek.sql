@@ -28,7 +28,7 @@ CREATE TABLE `historiek` (
   `idHistoriek` int(11) NOT NULL AUTO_INCREMENT,
   `Sensor` varchar(45) NOT NULL,
   `Datum` datetime NOT NULL,
-  `Waarde` int(11) NOT NULL,
+  `Waarde` varchar(45) NOT NULL,
   PRIMARY KEY (`idHistoriek`),
   UNIQUE KEY `idHistoriek_UNIQUE` (`idHistoriek`),
   KEY `fk_Historiek_Sensoren_idx` (`Sensor`),
